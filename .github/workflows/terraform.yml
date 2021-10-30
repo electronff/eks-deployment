@@ -8,8 +8,24 @@ on:
   pull_request:
 
 jobs:
+  build_push:
+    name: 'Build_image'
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      name: Check out code
+    - uses: mr-smithers-excellent/docker-build-push@v5
+      name: Build & push Docker image
+      with:
+        image: muritala/flask
+        registry: docker.io
+        dockerfile: Dockerfile.ci
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+
   terraform:
     name: 'Terraform'
+    needs: 'build_push'
     runs-on: ubuntu-latest
     environment: production
 
@@ -61,21 +77,3 @@ jobs:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_REGION: 'us-east-1'
-        
-
-
-  # build_push:
-  #   name: 'Build_image'
-  #   # needs: 'terraform'
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #   - uses: actions/checkout@v2
-  #     name: Check out code
-  #   - uses: mr-smithers-excellent/docker-build-push@v5
-  #     name: Build & push Docker image
-  #     with:
-  #       image: muritala/flask
-  #       registry: docker.io
-  #       dockerfile: Dockerfile.ci
-  #       username: ${{ secrets.DOCKER_USERNAME }}
-  #       password: ${{ secrets.DOCKER_PASSWORD }}
