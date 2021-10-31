@@ -89,6 +89,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Push image and deploy
+        run: |
+          kubectl delete pyservice
         uses: observian/littleci-littlecd-eks@master
         with:
           access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
