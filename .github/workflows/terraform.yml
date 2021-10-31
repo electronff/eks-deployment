@@ -100,3 +100,15 @@ jobs:
           eks_cluster_name: terraform-eks-demo
           k8s_manifest: pythonapp.yml
           k8s_image_tag: 0.1.1.${{ github.run_number }}
+
+
+      - run: docker build --tag my-image:v1 .
+      - name: Push to ECR
+        id: ecr
+        uses: jwalton/gh-ecr-push@v1
+        with:
+          access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          region: us-east-1
+          image: my-image:v1
+
