@@ -97,6 +97,6 @@ jobs:
           repo: public.ecr.aws/j3l7f6q0/pythoneks
           region: ${{ secrets.AWS_REGION }}
           tags: 0.1.1.${{ github.run_number }},${{ github.sha }}
-          eks_cluster_name: pythoneks
+          eks_cluster_name: terraform-eks-demo
           k8s_manifest: pythonapp.yml
           k8s_image_tag: 0.1.1.${{ github.run_number }}
