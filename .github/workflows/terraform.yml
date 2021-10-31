@@ -97,7 +97,7 @@ jobs:
           access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           account_id: ${{ secrets.AWS_ACCOUNT_ID }}
-          repo: webapp
+          repo: webapp:abc97f89f88e6d365a465fc9e7b11a5667e46766, 0.1.1.46
           region: ${{ secrets.AWS_REGION }}
           tags: 0.1.1.${{ github.run_number }},${{ github.sha }}
           eks_cluster_name: terraform-eks-demo
