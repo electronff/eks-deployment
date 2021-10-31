@@ -82,7 +82,7 @@ jobs:
 
 
 
-  Delpoyment:
+  Deployment:
     runs-on: ubuntu-latest
     # needs: 'build_push'
     steps:
@@ -101,8 +101,9 @@ jobs:
           region: ${{ secrets.AWS_REGION }}
           tags: 0.1.1.${{ github.run_number }},${{ github.sha }}
           eks_cluster_name: terraform-eks-demo
-          k8s_manifest: deployment.yml
           k8s_image_tag: 0.1.1.${{ github.run_number }}
+          k8s_manifest: deployment.yml
+          
 
 
       # - run: docker build --tag webapp:latest .
