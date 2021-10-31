@@ -70,16 +70,32 @@
 # CMD [ "python", "./main.py" ]
 
 
-FROM python:3.8.0-buster
+# FROM python:3.8.0-buster
 
-# Make a directory for our application
-WORKDIR /application
-# Install dependencies
-COPY requirements.txt .
-RUN pip3 install -r requirements.txt
+# # Make a directory for our application
+# WORKDIR /application
+# # Install dependencies
+# COPY requirements.txt .
+# RUN pip3 install -r requirements.txt
 
-# Copy our source code
-COPY main.py .
+# # Copy our source code
+# COPY main.py .
 
-# Run the application
-CMD ["python", "main.py"]
+# # Run the application
+# CMD ["python", "main.py"]
+
+
+
+FROM python:3.7-slim-buster
+RUN apt-get update -y
+
+WORKDIR /app
+
+COPY requirements.txt requirements.txt
+RUN pip install -r requirements.txt
+
+COPY . /app
+
+EXPOSE 8080
+ENTRYPOINT ["python"]
+CMD ["run.py"]
