@@ -57,3 +57,7 @@ output "config_map_aws_auth" {
 output "kubeconfig" {
   value = local.kubeconfig
 }
+
+output "eks_cluster_name" {
+  value = "aws_eks_cluster.demo.var.cluster-name.id"
+}
