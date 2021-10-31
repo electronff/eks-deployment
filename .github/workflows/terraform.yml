@@ -94,7 +94,7 @@ jobs:
       #     access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
       #     secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       #     account_id: ${{ secrets.AWS_ACCOUNT_ID }}
-      #     repo: 998252513391.dkr.ecr.us-east-1.amazonaws.com/webapp
+      #     repo: 998252513391.dkr.ecr.us-east-1.amazonaws.com/webapp:latest
       #     region: ${{ secrets.AWS_REGION }}
       #     tags: 0.1.1.${{ github.run_number }},${{ github.sha }}
       #     eks_cluster_name: terraform-eks-demo
@@ -102,7 +102,7 @@ jobs:
       #     k8s_image_tag: 0.1.1.${{ github.run_number }}
 
 
-      - run: docker build --tag webapp:v1 .
+      - run: docker build --tag webapp:latest .
       - name: Push to ECR
         id: ecr
         uses: jwalton/gh-ecr-push@v1
@@ -110,5 +110,23 @@ jobs:
           access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           region: us-east-1
-          image: webapp:v1
+          image: webapp:latest
+
+
+  # deploy:
+  #     runs-on: ubuntu-latest
+  #     steps:
+  #       - uses: actions/checkout@v2
+  #       - name: Deploy
+  #         uses: GavinRay97/garden-eks-deploy-action@v1.0
+  #         env:
+  #           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  #           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  #           aws_region: $AWS_REGION
+  #           cluster_name: $EKS_CLUSTER_NAME
+  #           kubeconfig_cluster_name: $KUBECONFIG_CLUSTER_NAME
+  #         with:
+  #           args: |
+  #             export KUBECONFIG=/github/home/.kube/config
+  #             webapp:latest deploy --env=aws
 

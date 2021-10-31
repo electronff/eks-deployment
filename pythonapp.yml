@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: pyhonapp
-        image: muritala/pyhonapp
+        image: 998252513391.dkr.ecr.us-east-1.amazonaws.com/webapp:latest
         ports:
         - containerPort: 5000
 ---
