@@ -92,7 +92,7 @@ jobs:
         uses: observian/littleci-littlecd-eks@master
         with:
           access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          secret_access_key: ${{ secrets.SECRET_ACCESS_KEY }}
+          secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           account_id: ${{ secrets.AWS_ACCOUNT_ID }}
           repo: ${{ secrets.ECR_REPO_NAME }}
           region: ${{ secrets.AWS_REGION }}
