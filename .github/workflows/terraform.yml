@@ -93,8 +93,8 @@ jobs:
         with:
           access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          # account_id: ${{ secrets.AWS_ACCOUNT_ID }}
-          repo: pythoneks
+          account_id: ${{ secrets.AWS_ACCOUNT_ID }}
+          repo: j3l7f6q0/pythoneks
           region: ${{ secrets.AWS_REGION }}
           tags: 0.1.1.${{ github.run_number }},${{ github.sha }}
           eks_cluster_name: terraform-eks-demo
