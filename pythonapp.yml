@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: Pythonapp-deployment
+  name: Pythonapp
   labels:
     app: pyhonapp
 spec:
@@ -23,7 +23,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: pyhonapp-service
+  name: pyservice
 spec:
   selector:
     app: pyhonapp
