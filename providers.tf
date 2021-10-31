@@ -6,16 +6,6 @@ provider "aws" {
   region = var.aws_region
 }
 
-terraform {
- backend "s3" {
- bucket = "state2"
- key    = "Terraform\newec2\terraform.tfstate"
- region = "us-east-2"
- dynamodb_table = "state2db"
- }
-}
-
-
 
 
 data "aws_availability_zones" "available" {}
