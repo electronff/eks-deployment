@@ -102,7 +102,7 @@ jobs:
       #     k8s_image_tag: 0.1.1.${{ github.run_number }}
 
 
-      - run: docker build --tag my-image:v1 .
+      - run: docker build --tag webapp:v1 .
       - name: Push to ECR
         id: ecr
         uses: jwalton/gh-ecr-push@v1
