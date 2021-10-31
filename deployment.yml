@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: python-web
-        image: 998252513391.dkr.ecr.us-east-1.amazonaws.com/webapp:latest
+        image: 998252513391.dkr.ecr.us-east-1.amazonaws.com/webapp:v3
         ports:
           - containerPort: 8080
         resources: {}
