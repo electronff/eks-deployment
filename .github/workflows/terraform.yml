@@ -70,14 +70,14 @@ jobs:
       env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: ${{ AWS_REGION}}
+          AWS_REGION: ${{ secrets.AWS_REGION}}
           
     - name: Terraform Destroy
       run: terraform destroy --auto-approve
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        AWS_REGION: ${{ AWS_REGION }}
+        AWS_REGION: ${{ secrets.AWS_REGION }}
 
 
 
@@ -94,8 +94,8 @@ jobs:
           access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           secret_access_key: ${{ secrets.SECRET_ACCESS_KEY }}
           account_id: ${{ secrets.AWS_ACCOUNT_ID }}
-          repo: ${{ ECR_REPO_NAME }}
-          region: ${{ AWS_REGION }}
+          repo: ${{ secrets.ECR_REPO_NAME }}
+          region: ${{ secrets.AWS_REGION }}
           tags: 0.1.1.${{ github.run_number }},${{ github.sha }}
           eks_cluster_name: terraform-eks-demo
           k8s_manifest: pythonapp.yml
