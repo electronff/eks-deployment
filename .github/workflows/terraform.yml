@@ -88,18 +88,18 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Push image and deploy
-        uses: observian/littleci-littlecd-eks@master
-        with:
-          access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          account_id: ${{ secrets.AWS_ACCOUNT_ID }}
-          repo: 998252513391.dkr.ecr.us-east-1.amazonaws.com/webapp
-          region: ${{ secrets.AWS_REGION }}
-          tags: 0.1.1.${{ github.run_number }},${{ github.sha }}
-          eks_cluster_name: terraform-eks-demo
-          k8s_manifest: pythonapp.yml
-          k8s_image_tag: 0.1.1.${{ github.run_number }}
+      # - name: Push image and deploy
+      #   uses: observian/littleci-littlecd-eks@master
+      #   with:
+      #     access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      #     secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      #     account_id: ${{ secrets.AWS_ACCOUNT_ID }}
+      #     repo: 998252513391.dkr.ecr.us-east-1.amazonaws.com/webapp
+      #     region: ${{ secrets.AWS_REGION }}
+      #     tags: 0.1.1.${{ github.run_number }},${{ github.sha }}
+      #     eks_cluster_name: terraform-eks-demo
+      #     k8s_manifest: pythonapp.yml
+      #     k8s_image_tag: 0.1.1.${{ github.run_number }}
 
 
       - run: docker build --tag my-image:v1 .
