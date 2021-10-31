@@ -1,3 +1,10 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: python-web
+
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -18,7 +25,7 @@ spec:
     spec:
       containers:
       - name: python-web
-        image: 998252513391.dkr.ecr.us-east-1.amazonaws.com/webapp:${IMAGE_TAG}
+        image: 998252513391.dkr.ecr.us-east-1.amazonaws.com/webapp:$IMAGE_TAG
         ports:
           - containerPort: 8080
         resources: {}
@@ -37,12 +44,6 @@ spec:
   - protocol: TCP
     port: 80
     targetPort: 8080
-
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: python-web
 
 ---
 
