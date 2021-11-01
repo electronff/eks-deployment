@@ -26,7 +26,7 @@ jobs:
 
   terraform:
     name: 'Terraform'
-    needs: 'build_push'
+    # needs: 'build_push'
     runs-on: ubuntu-latest
     environment: Dev
 
