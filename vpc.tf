@@ -56,8 +56,8 @@ resource "aws_route_table_association" "demo" {
 terraform {
  backend "s3" {
  bucket = "actionstate"
- key    = "Terraform\eks-deployment\terraform.tfstate"
- region = var.aws_region
+ key    = "terraform.tfstate"
+ region = "us-east-1"
  dynamodb_table = "state2db"
  }
 }
