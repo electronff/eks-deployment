@@ -6,7 +6,7 @@ WORKDIR /main
 COPY . /main.py
 # Install app dependecy 
 RUN apt-get install -y python3-pip && pip3 install --upgrade pip
-RUN pip3 install -r requirements.txt
+RUN pip install -r requirements.txt
 #Expose Nginx Port
 EXPOSE 5000
 #Start NginxService 
