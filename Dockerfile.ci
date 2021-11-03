@@ -106,5 +106,6 @@ FROM python:3.8.0-buster
 COPY . /application
 WORKDIR /application
 RUN pip install -r requirements.txt
+EXPOSE 8080
 ENTRYPOINT ["python"]
 CMD ["main.py"]
