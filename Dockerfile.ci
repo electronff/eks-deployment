@@ -1,17 +1,17 @@
-# Base Image 
-FROM ubuntu:20.04
-RUN apt-get update && apt-get install -y python3.9
-# Working directory inside app
-WORKDIR /main
-COPY . /main.py
-# Install app dependecy 
-RUN apt-get install -y python3-pip && pip3 install --upgrade pip
-RUN pip install -r requirements.txt
-#Expose Nginx Port
-EXPOSE 5000
-#Start NginxService 
-ENTRYPOINT ["bash","entrypoint.prod.sh"]
-CMD ["python3", "main.py", "bash"]
+# # Base Image 
+# FROM ubuntu:20.04
+# RUN apt-get update && apt-get install -y python3.9
+# # Working directory inside app
+# WORKDIR /main
+# COPY . /main.py
+# # Install app dependecy 
+# RUN apt-get install -y python3-pip && pip3 install --upgrade pip
+# RUN pip install -r requirements.txt
+# #Expose Nginx Port
+# EXPOSE 5000
+# #Start NginxService 
+# ENTRYPOINT ["bash","entrypoint.prod.sh"]
+# CMD ["python3", "main.py", "bash"]
 
 # #using ubuntu LTS version
 # FROM ubuntu:20.04 AS builder-image
@@ -99,3 +99,12 @@ CMD ["python3", "main.py", "bash"]
 # EXPOSE 8080
 # ENTRYPOINT ["python"]
 # CMD ["main.py"]
+
+
+FROM python:3.8.0-buster
+
+COPY . /application
+WORKDIR /application
+RUN pip install -r requirements.txt
+ENTRYPOINT ["python"]
+CMD ["main.py"]
