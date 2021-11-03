@@ -1,4 +1,4 @@
-# # ---
+---
 # # apiVersion: v1
 # # kind: Namespace
 # # metadata:
@@ -70,17 +70,15 @@
 
 
 
----
-
 
 apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
 kind: Deployment
 metadata:
-  name: pyhtonweb
+  name: pythonweb
 spec:
   selector:
     matchLabels:
-      app: pyhtonweb
+      app: pythonweb
   replicas: 2 # tells deployment to run 2 pods matching the template
   strategy:
     type: RollingUpdate
@@ -91,29 +89,28 @@ spec:
   template:
     metadata:
       labels:
-        app: pyhtonweb
+        app: pythonweb
     spec:
       containers:
-      - name: pyhtonweb
-        image: 998252513391.dkr.ecr.us-east-1.amazonaws.com/webapp:$IMAGE_TAG
+      - name: pythonweb
+        image: muritala/pyhonapp
         imagePullPolicy: Always
         ports:
-        - containerPort: 80
+        - containerPort: 5000
 ---
-
 apiVersion: v1
 kind: Service
 metadata:
-  name: pyhtonweb-svc
+  name: pythonweb-svc
   labels:
-    app: pyhtonweb
+    app: pythonweb
 spec:
   selector:
-    app: pyhtonweb
+    app: pythonweb
   type: LoadBalancer
   ports:
-    - port: 80
-      targetPort: 80
+    - port: 5000
+      targetPort: 5000
       nodePort: 31200
 
 
