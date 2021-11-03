@@ -68,38 +68,53 @@
 
 
 
-apiVersion: apps/v1
+
+
+---
+
+
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
 kind: Deployment
 metadata:
   name: pyhtonweb
-  labels:
-    app: python-web
 spec:
-  replicas: 1
   selector:
     matchLabels:
-      app: python-web
+      app: pyhtonweb
+  replicas: 2 # tells deployment to run 2 pods matching the template
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+
   template:
     metadata:
       labels:
-        app: python-web
+        app: pyhtonweb
     spec:
       containers:
-      - name: python-web
+      - name: pyhtonweb
         image: 998252513391.dkr.ecr.us-east-1.amazonaws.com/webapp:$IMAGE_TAG
+        imagePullPolicy: Always
         ports:
-          - containerPort: 8080
-
+        - containerPort: 80
 ---
+
 apiVersion: v1
 kind: Service
 metadata:
-  name: python-web-service
+  name: pyhtonweb-svc
+  labels:
+    app: pyhtonweb
 spec:
   selector:
-    app: python-web
-  type: NodePort
+    app: pyhtonweb
+  type: LoadBalancer
   ports:
-  - protocol: TCP
-    port: 80
-    targetPort: 8080
+    - port: 80
+      targetPort: 80
+      nodePort: 31200
+
+
+  
