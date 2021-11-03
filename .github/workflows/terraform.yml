@@ -24,7 +24,7 @@ jobs:
   #       username: ${{ secrets.DOCKER_USERNAME }}
   #       password: ${{ secrets.DOCKER_PASSWORD }}
 
-  terraform:
+  # terraform:
   #   name: 'Terraform'
   #   # needs: 'build_push'
   #   runs-on: ubuntu-latest
