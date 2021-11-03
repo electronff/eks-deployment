@@ -59,5 +59,6 @@ terraform {
  key    = "terraform.tfstate"
  region = "us-east-1"
  dynamodb_table = "state2db"
+ profile = "default"
  }
 }
