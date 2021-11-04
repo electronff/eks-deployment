@@ -137,5 +137,5 @@ jobs:
               export KUBECONFIG=/github/home/.kube/config
               kubectl apply -f deployment.yml
               kubectl get deploy
-              kubectl get -o wide svc client
+              kubectl get svc
              # deploymemt deploy --env=aws
