@@ -94,7 +94,7 @@ spec:
       containers:
       - name: pythonweb
         #image: 998252513391.dkr.ecr.us-east-1.amazonaws.com/webapp:$IMAGE_TAG
-        image: muritala/pythonweb
+        image: muritala/pythonapp        
         imagePullPolicy: Always
         ports:
         - containerPort: 5000
