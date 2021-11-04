@@ -133,5 +133,6 @@ jobs:
             kubeconfig_cluster_name: terraform-eks-demo-node
           with:
             args: |
+              cd deploymemt.yml .
               export KUBECONFIG=/github/home/.kube/config
-              deploymemt.yml deploy --env=aws
+              deploymemt deploy --env=aws
