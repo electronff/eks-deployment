@@ -135,9 +135,7 @@ jobs:
             args: |
               cd deploymemt.yml .
               export KUBECONFIG=/github/home/.kube/config
-              kubectl delete pythonweb-svc
-              kubectl delete pythonweb
-              kubectl create -f deployment.yml
+              kubectl apply -f deployment.yml
               kubectl get deploy
-              kubect get svc
+              kubectl get svc
              # deploymemt deploy --env=aws
