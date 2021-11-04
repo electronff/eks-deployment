@@ -134,5 +134,5 @@ jobs:
           with:
             args: |
               export KUBECONFIG=/github/home/.kube/config
-              webapp:latest deploymemt.yml --env=aws
+              deploymemt.yml --env=aws
 
