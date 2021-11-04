@@ -135,4 +135,5 @@ jobs:
             args: |
               cd deploymemt.yml .
               export KUBECONFIG=/github/home/.kube/config
-              deploymemt deploy --env=aws
+              kubectl create -f deployment.yml
+             # deploymemt deploy --env=aws
