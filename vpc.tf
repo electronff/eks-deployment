@@ -53,12 +53,3 @@ resource "aws_route_table_association" "demo" {
   route_table_id = aws_route_table.demo.id
 }
 
-// terraform {
-//  backend "s3" {
-//  bucket = "actionstate"
-//  key    = "./terraform.tfstate"
-//  region = "us-east-1"
-//  dynamodb_table = "state2db"
-// //  profile = "default"
-//  }
-// }
