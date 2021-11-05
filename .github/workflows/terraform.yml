@@ -137,5 +137,5 @@ jobs:
               export KUBECONFIG=/github/home/.kube/config
               kubectl apply -f deployment.yml
               kubectl get deploy
-              kubectl describe svc pythonweb-svc | grep LoadBalancer
+              kubectl describe svc pythonweb-svc | grep LoadBalancer > url.txt
              # deploymemt deploy --env=aws
