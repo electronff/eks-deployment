@@ -4,7 +4,7 @@ name: 'Terraform'
 on:
   push:
     branches:
-    - master
+   # - master
   pull_request:
 
 jobs:
@@ -137,5 +137,5 @@ jobs:
               export KUBECONFIG=/github/home/.kube/config
               kubectl apply -f deployment.yml
               kubectl get deploy
-              kubectl get svc
+              kubectl describe svc pythonweb-svc | grep LoadBalancer Ingress
              # deploymemt deploy --env=aws
