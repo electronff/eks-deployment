@@ -7,6 +7,8 @@ variable "cluster-name" {
   default = "terraform-eks-demo"
   type    = string
 }
+
+# s3 bucket
 terraform {
  backend "s3" {
  bucket = "actionstate"
