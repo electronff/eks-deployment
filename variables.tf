@@ -9,10 +9,15 @@ variable "cluster-name" {
 }
 
 # s3 bucket
+// terraform {
+//  backend "s3" {
+//  bucket = "actionstate"
+//  key    = "actionstate.tfstate"
+//  region = "us-east-1"
+//  }
+// }
+
 terraform {
- backend "s3" {
- bucket = "actionstate"
- key    = "actionstate.tfstate"
- region = "us-east-1"
- }
+  backend "s3" {
+  }
 }
