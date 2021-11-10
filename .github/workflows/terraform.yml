@@ -36,7 +36,8 @@ jobs:
 
 
   build_push:
-    name: 'terrascan_job'
+    name: build-push
+    needs: 'terrascan_job'
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
