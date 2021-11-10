@@ -17,6 +17,7 @@ def homepage():
 
 @app.route("/status")
 def root():
+    
 	ret = {
 		'result': RESPONSE
 	}
