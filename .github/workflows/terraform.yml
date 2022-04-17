@@ -171,4 +171,7 @@ jobs:
               kubectl apply -f deployment.yml
               kubectl get deploy
               kubectl describe svc pythonweb-svc | grep LoadBalancer > url.txt
+              kubectl create namespace argocd
+              kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/v2.0.4/manifests/install.yaml
+
              # deploymemt deploy --env=aws
