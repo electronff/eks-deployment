@@ -41,3 +41,4 @@ aws/testdata/service/cloudformation/examplecompany-exampleservice-exampleresourc
 /.vs
 node_modules
 tf_key.pem
+config
