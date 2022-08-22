@@ -35,7 +35,7 @@ jobs:
   
   terrascan_job:
       runs-on: ubuntu-latest
-      needs: sonarqube
+      #needs: sonarqube
       name: terrascan-action
       steps:
       - name: Checkout repository
